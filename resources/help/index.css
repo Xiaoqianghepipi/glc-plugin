@@ -1,0 +1,65 @@
+.help-wrapper {
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.4); /* 暗色遮罩，保证文字清晰 */
+  backdrop-filter: blur(5px);
+  color: #fff;
+  min-width: 600px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 15px;
+}
+
+.header .title {
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.header .subtitle {
+  font-size: 16px;
+  color: #ddd;
+  margin-top: 5px;
+}
+
+.group-box {
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.group-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #ffcc00; /* 高亮标题色 */
+}
+
+.command-list {
+  display: grid;
+  gap: 15px;
+}
+
+.command-item {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border-left: 4px solid #ffcc00;
+}
+
+.cmd-title {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.cmd-desc {
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 4px;
+}

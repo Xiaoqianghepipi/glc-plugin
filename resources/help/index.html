@@ -1,0 +1,37 @@
+{{extend '../common/layout/default.html'}}
+
+{{block 'css'}}
+<link rel="stylesheet" type="text/css" href="{{_res_path}}/help/index.css" />
+<style>
+  /* 动态注入背景图 */
+  .container {
+    background: url("{{_res_path}}/help/imgs/{{bg}}") no-repeat center center;
+    background-size: cover;
+  }
+</style>
+{{/block}}
+
+{{block 'main'}}
+<div class="help-wrapper">
+  <div class="header">
+    <div class="title">{{helpCfg.title}}</div>
+    <div class="subtitle">{{helpCfg.subTitle}}</div>
+  </div>
+
+  <div class="content">
+    {{each helpGroup group}}
+    <div class="group-box">
+      <div class="group-title">{{group.group}}</div>
+      <div class="command-list" style="grid-template-columns: repeat({{colCount}}, 1fr);">
+        {{each group.list item}}
+        <div class="command-item">
+          <div class="cmd-title">{{item.title}}</div>
+          <div class="cmd-desc">{{item.desc}}</div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{/block}}
