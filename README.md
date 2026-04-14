@@ -23,7 +23,7 @@ glc-plugin 是一个为 Yunzai-Bot 开发的 归龙潮（果粒橙） 游戏插�
 - **common/** - 模板公共布局
 
 ### 项目配置
-- **package.json** - 项目元数据，main 指向 `index.js`
+- **index.js** - 根入口，统一导出 apps 模块给 Yunzai 注册
 
 ## 功能说明
 
