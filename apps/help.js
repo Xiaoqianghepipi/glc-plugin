@@ -22,7 +22,7 @@ export class Help extends plugin {
     try {
       logger.info('[归龙潮插件] 正在动态生成帮助图...')
 
-      const img = await puppeteer.render('help', buildHelpData(), {
+      const img = await puppeteer.render('help/index', buildHelpData(), {
         e,
         scale: 1.2,
         retType: 'base64'
