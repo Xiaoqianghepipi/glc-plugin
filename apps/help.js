@@ -1,5 +1,5 @@
-import plugin from '../../lib/plugins/plugin.js'
-import puppeteer from '../../lib/puppeteer/puppeteer.js'
+import plugin from '../../../lib/plugins/plugin.js'
+import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 import { buildHelpData } from '../lib/help-data.js'
 
 export class Help extends plugin {
