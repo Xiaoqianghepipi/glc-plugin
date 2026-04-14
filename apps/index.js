@@ -2,7 +2,7 @@ import plugin from '../../lib/plugins/plugin.js'
 import { sendGuide } from './services/guide.js'
 import { sendHelp } from './services/help.js'
 
-export class Guilongchao extends plugin {
+export default class Guilongchao extends plugin {
   constructor() {
     super({
       name: '归龙潮插件',
