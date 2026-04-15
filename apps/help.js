@@ -1,7 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 import { buildHelpData } from '../lib/help-data.js'
-import { getSettings } from '../lib/settings.js'
+import runtimeRender from '../lib/runtimeRender.js'
 
 export class Help extends plugin {
   constructor() {
@@ -22,9 +21,7 @@ export class Help extends plugin {
   async sendHelp(e) {
     try {
       logger.info('[归龙潮插件] 正在动态生成帮助图...')
-      const settings = getSettings()
-
-      const img = await puppeteer.screenshot('help', buildHelpData(settings))
+      const img = await runtimeRender(e, 'help', buildHelpData())
 
       if (img) {
         await e.reply(img)

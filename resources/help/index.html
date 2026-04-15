@@ -16,7 +16,7 @@
   }
 </style>
 <body>
-  <div class="container" id="container" {{scaleStyle}}>
+  <div class="container" id="container" {{@sys?.scale}}>
     <div class="help-wrapper">
       <div class="header">
         <div class="title">{{helpCfg.title}}</div>
@@ -26,7 +26,7 @@
         {{each helpGroup group}}
         <div class="group-box">
           <div class="group-title">{{group.group}}</div>
-          <div class="command-list" style="grid-template-columns: repeat({{colCount}}, 1fr);">
+          <div class="command-list" style="grid-template-columns: repeat(2, 1fr);">
             {{each group.list item}}
             <div class="command-item">
               <div class="cmd-title">{{item.title}}</div>
