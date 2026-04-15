@@ -36,6 +36,7 @@ export class Update extends plugin {
 
   async update(e) {
     try {
+      await e.reply(`归龙潮插件正在更新......`)
       logger.info('[归龙潮插件] 开始执行更新...')
 
       const result = await updatePlugin()
