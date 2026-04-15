@@ -34,7 +34,7 @@ export class Guide extends plugin {
         logger.info(`[归龙潮插件] 发送攻略图: ${name}`)
         await e.reply(segment.image(`file://${imagePath}`))
       } else {
-        await e.reply(`未找到【${name}】的攻略图哦，请检查 guide 目录~`)
+        await e.reply(`未找到【${name}】的攻略图哦，请检查角色名字是否正确~`)
       }
 
       return true
