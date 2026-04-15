@@ -27,6 +27,7 @@ glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮（果粒橙）游戏插件
 
 - `apps/guide.js`：攻略查询功能模块，导出 `Guide` 类。
 - `apps/help.js`：帮助页面功能模块，导出 `Help` 类。
+- `apps/setting.js`：插件设置功能模块，导出 `Setting` 类。
 - `apps/update.js`：插件更新功能模块，导出 `Update` 类。
 
 ### lib 目录
@@ -36,6 +37,7 @@ glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮（果粒橙）游戏插件
 - `lib/config.js`：插件名、路径等配置常量。
 - `lib/help-data.js`：帮助页面数据构造函数。
 - `lib/resource.js`：本地资源查找工具函数。
+- `lib/settings.js`：插件设置读写（含渲染精度持久化）。
 
 ### resources 目录
 
@@ -56,6 +58,17 @@ glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮（果粒橙）游戏插件
 
 - 命令：`&帮助` 或 `#归龙潮帮助`
 - 行为：动态渲染 HTML 模板生成帮助图，并通过 Puppeteer 截图发送。
+- 精度：读取设置项 `renderScale`（0~200%）作为渲染缩放倍率。
+
+### 插件设置
+
+- 命令：`#归龙潮设置精度 <0~200>` 或 `&设置精度 <0~200>`
+- 权限：仅 `master` 可用
+- 行为：设置图片渲染精度并持久化到插件配置文件。
+
+- 命令：`#归龙潮查看精度` 或 `&查看精度`
+- 权限：所有用户可用
+- 行为：查看当前图片渲染精度。
 
 ### 插件更新
 
