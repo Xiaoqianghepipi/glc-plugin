@@ -6,6 +6,16 @@
   <title>{{title}}</title>
   <link rel="stylesheet" type="text/css" href="{{_res_path}}/help/index.css" />
 </head>
+<style>
+    .container {
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    zoom: {{renderScale}};
+    background: url("{{_res_path}}/help/imgs/{{bg}}") no-repeat center center;
+    background-size: cover;
+  }
+</style>
 <body {{@sys?.scale}}>
   <div class="container" id="container">
     <div class="help-wrapper">
