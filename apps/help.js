@@ -23,8 +23,9 @@ export class Help extends plugin {
     try {
       logger.info('[归龙潮插件] 正在动态生成帮助图...')
       const settings = getSettings()
+      const scale = settings.renderScale / 100
 
-      const img = await puppeteer.screenshot('help', buildHelpData(settings))
+      const img = await puppeteer.screenshot('help', buildHelpData(settings), { scale })
 
       if (img) {
         await e.reply(img)
