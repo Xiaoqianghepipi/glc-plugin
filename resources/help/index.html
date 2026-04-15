@@ -5,32 +5,12 @@
   <meta name="viewport" content="width=device-width">
   <title>{{title}}</title>
   <link rel="stylesheet" type="text/css" href="{{_res_path}}/help/index.css" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: "Microsoft YaHei", sans-serif; padding: 20px; }
-    .container {
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      position: relative;
-      zoom: {{renderScale}};
-      background: url("{{_res_path}}/help/imgs/{{bg}}") no-repeat center center;
-      background-size: cover;
-    }
-    .copyright {
-      text-align: center;
-      color: #fff;
-      padding: 10px;
-      background: rgba(0,0,0,0.5);
-      font-size: 14px;
-    }
-  </style>
 </head>
 <body {{@sys?.scale}}>
   <div class="container" id="container">
     <div class="help-wrapper">
       <div class="header">
         <div class="title">{{helpCfg.title}}</div>
-        <div class="subtitle">{{helpCfg.subTitle}}</div>
       </div>
 
       <div class="content">
