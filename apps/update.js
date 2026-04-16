@@ -74,11 +74,10 @@ export class Update extends plugin {
       if (result.ok) {
         if (result.updated) {
           const sent = await restartByStdinCommand()
-          
           await e.reply(forwardMsg)
-
+          await e.reply(`插件已更新完成，正在尝试重启...`)
           if (sent) {
-            await e.reply(`插件已更新完成，已通过标准输入发送 #重启。`)
+            await e.reply(`已通过标准输入发送 #重启。`)
           } else {
             await e.reply(`插件已更新完成，但未找到 stdin 适配器，请手动发送 #重启。`)
           }
