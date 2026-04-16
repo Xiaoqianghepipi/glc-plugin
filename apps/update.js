@@ -8,13 +8,17 @@ async function restartByStdinCommand() {
 
     const stdinAdapter = adapters.find(i => i?.id === 'stdin' && typeof i?.message === 'function')
     if (!stdinAdapter) return false
-
+    
     await stdinAdapter.message('#重启')
     return true
   } catch (err) {
     logger.warn('[归龙潮插件] 通过标准输入发送 #重启 失败。', err)
     return false
   }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 function buildForwardMessage(e, title, content) {
@@ -73,12 +77,12 @@ export class Update extends plugin {
 
       if (result.ok) {
         if (result.updated) {
-          const sent = await restartByStdinCommand()
-          await e.reply(`插件已更新完成，正在尝试重启...`)
+          await e.reply('插件已更新完成，更新日志如下。即将自动重启。')
           await e.reply(forwardMsg)
-          if (sent) {
-            await e.reply(`已通过标准输入发送 #重启。`)
-          } else {
+
+          await sleep(2000)
+          const sent = await restartByStdinCommand()
+          if (!sent) {
             await e.reply(`插件已更新完成，但未找到 stdin 适配器，请手动发送 #重启。`)
           }
           logger.info('[归龙潮插件] 更新成功。')

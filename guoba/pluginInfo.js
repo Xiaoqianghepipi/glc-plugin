@@ -12,6 +12,6 @@ export default {
   version: pluginVersion,
   icon: 'mdi:gamepad-variant',
   iconColor: '#f59e0b',
-  iconPath: path.join('./icon.png'),
+  iconPath: './icon.png',
   depends: [],
 }
