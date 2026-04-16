@@ -1,82 +1,72 @@
-* { 
-  margin: 0;
-  padding: 0; 
-  box-sizing: border-box;
-}
-body { 
-  transform: scale(1);
-  font-family: "Microsoft YaHei", sans-serif;
-  padding: 20px; 
-}
-.copyright {
-  text-align: center;
-  color: #fff;
-  padding: 10px;
-  background: rgba(0,0,0,0.5);
-  font-size: 14px;
-}
 .help-wrapper {
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.4); /* 暗色遮罩，保证文字清晰 */
-  backdrop-filter: blur(5px);
+  padding: 28px;
+  background: rgba(7, 11, 18, 0.46);
+  backdrop-filter: blur(8px);
   color: #fff;
   min-width: 600px;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 30px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 15px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 16px;
 }
 
 .header .title {
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 30px;
+  font-weight: 700;
   letter-spacing: 2px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header .subtitle {
-  font-size: 16px;
-  color: #ddd;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
   margin-top: 5px;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .group-box {
-  margin-bottom: 25px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
 }
 
 .group-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #ffcc00; /* 高亮标题色 */
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #ffd45d;
 }
 
 .command-list {
   display: grid;
-  gap: 15px;
+  gap: 12px;
 }
 
 .command-item {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 10px 15px;
-  border-radius: 8px;
+  min-height: 72px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.28);
   border-left: 4px solid #ffcc00;
 }
 
 .cmd-title {
-  font-size: 18px;
-  font-weight: bold;
-  font-family: monospace;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
 .cmd-desc {
   font-size: 14px;
-  color: #ccc;
-  margin-top: 4px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
 }
