@@ -1,6 +1,6 @@
-# glc-plugin
+<img decoding="async" align=right src="icon.png" alt="插件图标" width="35%" />
 
-<img align=center src="icon.png" alt="插件图标" width="60%">
+# glc-plugin
 
 glc-plugin 是一个为 Yunzai-Bot 开发的 归龙潮（果粒橙） 游戏插件
 
