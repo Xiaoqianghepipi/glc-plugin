@@ -1,4 +1,5 @@
-import { pluginName, pluginVersion } from '../lib/config.js'
+import path from 'path'
+import { pluginName, pluginVersion, pluginRoot } from '../lib/config.js'
 
 export default {
   name: pluginName,
@@ -12,6 +13,6 @@ export default {
   version: pluginVersion,
   icon: 'mdi:gamepad-variant',
   iconColor: '#f59e0b',
-  iconPath: './icon.png',
+  iconPath: path.join(pluginRoot, 'icon.png'),
   depends: [],
 }
