@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 body { 
+  transform: scale(1);
   font-family: "Microsoft YaHei", sans-serif;
   padding: 20px; 
 }
