@@ -5,8 +5,14 @@ export default {
   title: '归龙潮插件',
   description: '归龙潮攻略与帮助插件',
   author: 'xiaoqianghepipi',
+  authorLink: [
+    'https://github.com/xiaoqianghepipi'
+  ],
+  isV2: true,
+  isV3: true,
   version: pluginVersion,
   icon: 'mdi:gamepad-variant',
   iconColor: '#f59e0b',
+  iconPath: path.join(pluginRoot, 'icon.png'),
   depends: [],
 }
