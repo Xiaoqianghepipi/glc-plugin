@@ -7,7 +7,7 @@
 body {
   min-height: 100vh;
   padding: 20px;
-  font-family: "Microsoft YaHei", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(180deg, #0e1322 0%, #121829 100%);
   color: #fff;
 }

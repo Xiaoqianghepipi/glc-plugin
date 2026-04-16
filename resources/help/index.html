@@ -7,6 +7,10 @@
     background: url("{{_res_path}}help/imgs/{{bg}}") no-repeat center center;
     background-size: cover;
   }
+
+  .container > .copyright {
+    display: none;
+  }
 </style>
 {{/block}}
 
@@ -14,7 +18,7 @@
 <div class="help-wrapper">
   <div class="header">
     <div class="title">{{helpCfg.title}}</div>
-    <div class="subtitle">{{helpCfg.subTitle}}</div>
+    <!-- <div class="subtitle">{{helpCfg.subTitle}}</div> -->
   </div>
 
   <div class="content">
@@ -31,6 +35,8 @@
       </div>
     </div>
     {{/each}}
+
+    <div class="copyright">{{@sys.copyright}}</div>
   </div>
 </div>
 {{/block}}
