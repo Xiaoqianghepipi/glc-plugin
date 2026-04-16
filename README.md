@@ -1,8 +1,8 @@
 <img decoding="async" align=right src="icon.png" alt="插件图标" width="35%" />
 
-# glc-plugin
+# GLC-PLUGIN
 
-glc-plugin 是一个为 Yunzai-Bot 开发的 归龙潮（果粒橙） 游戏插件
+- 这是一个为 Yunzai-Bot 开发的 归龙潮（果粒橙） 游戏插件
 
 ## 功能
 
@@ -13,9 +13,3 @@ glc-plugin 是一个为 Yunzai-Bot 开发的 归龙潮（果粒橙） 游戏插�
 - `#归龙潮更新` 或 `&更新`：拉取插件最新代码并提示更新结果，仅管理员可用。
 - 支持使用锅巴配置设置
 - 还有更多~~坑还没填完~~......
-
-## （下面的内容是为了让AI听懂人话）
-
-## 详细规范
-
-更完整的架构、职责划分和约定，请看 [AI_README.md](AI_README.md)。
