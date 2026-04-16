@@ -17,6 +17,35 @@ async function restartByStdinCommand() {
   }
 }
 
+function buildForwardMessage(e, title, content) {
+  const text = String(content || '').trim() || '无输出'
+  const lines = text.split(/\r?\n/)
+  const chunkSize = 8
+  const nodes = []
+  const botUin = Number(e?.self_id || e?.bot?.uin || 10000)
+
+  for (let i = 0; i < lines.length; i += chunkSize) {
+    const chunk = lines.slice(i, i + chunkSize).join('\n').trim()
+    if (!chunk) continue
+
+    nodes.push({
+      user_id: botUin,
+      nickname: title,
+      message: chunk,
+    })
+  }
+
+  if (!nodes.length) {
+    nodes.push({
+      user_id: botUin,
+      nickname: title,
+      message: text,
+    })
+  }
+
+  return globalThis.Bot?.makeForwardMsg ? globalThis.Bot.makeForwardMsg(nodes) : text
+}
+
 export class Update extends plugin {
   constructor() {
     super({
@@ -40,20 +69,25 @@ export class Update extends plugin {
       logger.info('[归龙潮插件] 开始执行更新...')
 
       const result = await updatePlugin()
+      const forwardMsg = buildForwardMessage(e, '归龙潮插件更新日志', result.output)
 
       if (result.ok) {
         if (result.updated) {
           const sent = await restartByStdinCommand()
           if (sent) {
-            await e.reply(`插件已更新完成，已通过标准输入发送 #重启。\n${result.output}`)
+            await e.reply(`插件已更新完成，已通过标准输入发送 #重启。`)
           } else {
-            await e.reply(`插件已更新完成，但未找到 stdin 适配器，请手动发送 #重启。\n${result.output}`)
+            await e.reply(`插件已更新完成，但未找到 stdin 适配器，请手动发送 #重启。`)
           }
+
+          await e.reply(forwardMsg)
         } else {
-          await e.reply(`插件已经是最新版本。\n${result.output}`)
+          await e.reply('插件已经是最新版本。')
+          await e.reply(forwardMsg)
         }
       } else {
-        await e.reply(`插件更新失败：${result.output}`)
+        await e.reply('插件更新失败，详情见聊天记录。')
+        await e.reply(forwardMsg)
       }
 
       return true
