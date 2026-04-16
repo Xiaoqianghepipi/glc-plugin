@@ -1,6 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { buildHelpData } from '../lib/help-data.js'
-import runtimeRender from '../lib/runtimeRender.js'
+import render from '../lib/render.js'
 
 export class Help extends plugin {
   constructor() {
@@ -21,7 +21,7 @@ export class Help extends plugin {
   async sendHelp(e) {
     try {
       logger.info('[归龙潮插件] 正在动态生成帮助图...')
-      const img = await runtimeRender(e, 'help', buildHelpData())
+      const img = await render(e, 'help', buildHelpData())
 
       if (img) {
         await e.reply(img)
