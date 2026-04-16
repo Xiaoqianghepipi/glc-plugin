@@ -3,8 +3,11 @@ import { pluginName, pluginVersion } from '../lib/config.js'
 export default {
   name: pluginName,
   title: '归龙潮插件',
-  description: '归龙潮攻略与帮助插件',
-  author: 'xiaoqianghepipi',
+  showInMenu: true,
+  description: '基于Yunzai的归龙潮游戏助手插件',
+  author: [
+    '@xiaoqianghepipi'
+  ],
   authorLink: [
     'https://github.com/xiaoqianghepipi'
   ],
