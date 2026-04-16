@@ -1,93 +1,99 @@
 # glc-plugin AI 说明
 
-本文档只整理插件的架构与规范，方便 AI 快速理解项目结构与职责边界。
-
-## 目录说明
-
-- `index.js`：插件入口，统一导出功能模块。
-- `apps/`：具体功能模块。
-- `lib/`：公共配置和工具。
-- `resources/`：静态资源与模板。
+本文档用于让 AI 快速理解 glc-plugin 的结构、职责边界和编辑约束。编辑此插件前，必须先阅读并遵守 yunzai-plugin-development skill。
 
 ## 项目定位
 
-glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮（果粒橙）游戏插件。
+glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮插件，核心能力包括攻略图发送、帮助页渲染、渲染精度配置和插件更新。
+
+## 目录说明
+
+- `index.js`：插件入口，统一导出 `Guide`、`Help`、`Setting`、`Update`。
+- `apps/`：业务功能模块，每个文件对应一个独立插件类。
+- `lib/`：公共配置、渲染、资源查找、设置读写和更新逻辑。
+- `resources/`：帮助页模板、公共布局、样式和攻略图片资源。
+- `guoba/`：Guoba 配置面板支持。
 
 ## 插件架构
 
-本插件按照 Yunzai 官方目录规范组织。
-
 ### 根目录
 
-- `index.js`：插件入口，统一导出 `apps` 中的所有功能类，供 Yunzai 注册。
+- `index.js`：只负责从 `apps/` 汇总导出，不承载业务逻辑。
+- `guoba.support.js`：对外导出 Guoba 支持入口。
 
 ### apps 目录
 
-`apps` 用于存放具体功能模块，每个文件对应一个独立功能。
-
-- `apps/guide.js`：攻略查询功能模块，导出 `Guide` 类。
-- `apps/help.js`：帮助页面功能模块，导出 `Help` 类。
-- `apps/setting.js`：插件设置功能模块，导出 `Setting` 类。
-- `apps/update.js`：插件更新功能模块，导出 `Update` 类。
+- `apps/guide.js`：攻略查询模块，命令为 `&[角色名]攻略`，从本地 `resources/guide/` 查找攻略图。
+- `apps/help.js`：帮助页模块，命令为 `&帮助` 或 `#归龙潮帮助`，通过渲染器生成帮助图片。
+- `apps/setting.js`：渲染精度设置模块，支持 `&设置渲染精度 <50-200>`、`#归龙潮设置渲染精度 <50-200>`、`&查看渲染精度`、`#归龙潮查看渲染精度`。
+- `apps/update.js`：插件更新模块，支持 `&更新`、`#归龙潮更新`，仅 master 可用。
 
 ### lib 目录
 
-`lib` 用于存放底层公共库、配置和可复用工具。
-
-- `lib/config.js`：插件名、路径等配置常量。
-- `lib/help-data.js`：帮助页面数据构造函数。
-- `lib/resource.js`：本地资源查找工具函数。
-- `lib/settings.js`：插件设置读写（含渲染精度持久化）。
+- `lib/config.js`：插件名、版本、安装路径和资源路径常量。
+- `lib/render.js`：帮助页渲染入口，封装 Puppeteer 截图和渲染倍率计算。
+- `lib/help-data.js`：帮助页内容数据构造。
+- `lib/resource.js`：本地文件查找工具，按扩展名匹配攻略图。
+- `lib/settings.js`：渲染精度的读取、校验和持久化。
+- `lib/update.js`：插件更新逻辑，通常由更新命令调用。
 
 ### resources 目录
 
-`resources` 用于存放静态资源与模板文件。
+- `resources/common/layout/default.html`：公共 HTML 布局模板。
+- `resources/common/common.css`：公共样式。
+- `resources/help/index.html`：帮助页模板。
+- `resources/help/index.css`：帮助页样式。
+- `resources/help/imgs/`：帮助页图片资源。
+- `resources/guide/`：攻略图片目录，文件名通常对应角色名或内容名。
 
-- `resources/help/`：帮助页面 HTML 模板和样式。
-- `resources/common/`：模板公共布局。
+### guoba 目录
+
+- `guoba/index.js`：Guoba 支持入口。
+- `guoba/pluginInfo.js`：插件元信息。
+- `guoba/configInfo.js`：配置项信息汇总。
+- `guoba/schemas/index.js`：配置表单定义，当前仅包含 `renderScale`，标签为“帮助图渲染精度”。
 
 ## 功能与命令
 
 ### 攻略查询
 
 - 命令：`&[角色名]攻略`
-- 行为：从 `resources/guide/` 目录读取对应角色的攻略图。
+- 行为：从 `resources/guide/` 中查找对应名称的图片并直接发送。
 - 支持格式：`.jpg`、`.png`、`.jpeg`、`.webp`
 
 ### 帮助页面
 
-- 命令：`&帮助` 或 `#归龙潮帮助`
-- 行为：动态渲染 HTML 模板生成帮助图，并通过 Puppeteer 截图发送。
-- 精度：读取设置项 `renderScale`（50~200%）作为渲染缩放倍率。
+- 命令：`&帮助`、`#归龙潮帮助`
+- 行为：读取 `lib/help-data.js` 生成页面数据，再通过 `lib/render.js` 渲染为图片。
+- 说明：帮助页会显示当前插件功能、更新入口和渲染精度设置入口。
 
-### 插件设置
+### 渲染精度设置
 
-- 命令：`#归龙潮设置精度 <50~200>` 或 `&设置精度 <50~200>`
-- 权限：仅 `master` 可用
-- 行为：设置图片渲染精度并持久化到插件配置文件。
-
-- 命令：`#归龙潮查看精度` 或 `&查看精度`
-- 权限：所有用户可用
-- 行为：查看当前图片渲染精度。
+- 命令：`&设置渲染精度 <50-200>`、`#归龙潮设置渲染精度 <50-200>`
+- 命令：`&查看渲染精度`、`#归龙潮查看渲染精度`
+- 权限：设置命令仅 master 可用；查看命令所有用户可用。
+- 行为：修改并持久化 `renderScale`，影响帮助图渲染倍率。
+- Guoba：也可通过 Guoba 配置面板修改同一项设置。
 
 ### 插件更新
 
-- 命令：`#归龙潮更新` 或 `&更新`
-- 权限：仅 `master` 可用
-- 行为：进入插件目录执行 `git pull --ff-only`，更新成功后尝试通过标准输入发送 `#重启`。
+- 命令：`&更新`、`#归龙潮更新`
+- 权限：仅 master 可用。
+- 行为：执行插件更新，成功后尝试通过 stdin 发送 `#重启`。
 
-## 规范约定
+## 编辑规范
 
-- `apps` 下每个文件应保持单一职责，一个文件一个功能类。
-- 根目录 `index.js` 只负责集中导出，不直接写业务逻辑。
-- 业务逻辑优先下沉到 `lib`，避免在入口文件中堆叠实现细节。
-- 静态资源和模板统一放在 `resources` 下。
-- 渲染模板和资源路径应保持稳定，避免依赖不明确的相对路径推断。
+- 每个 `apps/` 文件保持单一职责，一个文件一个功能类。
+- 根目录入口只做导出和组织，不堆业务实现。
+- 公共逻辑优先下沉到 `lib/`，避免在功能类里重复实现。
+- 帮助页与公共布局统一从 `resources/` 读取，路径保持稳定。
+- 改动命令、配置项或资源路径时，要同步更新帮助页和本说明。
+- 只要涉及本插件的代码编辑、重构、补充测试或文档改写，先读取 yunzai-plugin-development skill，再开始修改。
 
 ## 运行约定
 
 - 插件运行于 Yunzai-Bot 进程内。
-- 命令触发后通过 `plugin` 类完成事件处理。
-- 帮助图通过 Puppeteer 渲染生成。
+- 消息命中后由对应 `plugin` 类处理事件。
+- 帮助图使用 Puppeteer 渲染生成。
 - 攻略图通过本地文件查找后直接发送。
-- 更新命令通过 `git pull` 拉取插件最新代码，执行权限应限制为 `master`。
+- 更新逻辑依赖 Git 拉取最新代码。
