@@ -1,13 +1,8 @@
 <img decoding="async" align=right src="icon.png" alt="插件图标" width="35%" max-width="200px" />
 
-
-<div align="left">
-
 # GLC-PLUGIN
 
 - 这是一个为 Yunzai-Bot 开发的 归龙潮（果粒橙） 游戏插件
-
-</div>
 
 ## 安装
 
