@@ -1,8 +1,27 @@
-<img decoding="async" align=right src="icon.png" alt="插件图标" width="35%" />
+<img decoding="async" align=right src="icon.png" alt="插件图标" width="35%" max-width="200px" />
+
+
+<div align="left">
 
 # GLC-PLUGIN
 
 - 这是一个为 Yunzai-Bot 开发的 归龙潮（果粒橙） 游戏插件
+
+</div>
+
+## 安装
+
+1. 推荐使用 Git 克隆本仓库到 Yunzai-Bot 的 `plugins/` 目录下，以方便后续升级。
+
+- 使用GitHub
+
+```sh
+git clone https://github.com/Xiaoqianghepipi/glc-plugin.git ./plugins/glc-plugin
+```
+
+2. 手动安装（不推荐）
+
+- 下载本仓库的 ZIP 包，解压后将文件夹重命名为 `glc-plugin`，然后移动到 Yunzai-Bot 的 `plugins/` 目录下。
 
 ## 功能
 
