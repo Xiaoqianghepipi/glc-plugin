@@ -82,14 +82,16 @@ export class Update extends plugin {
           } else {
             await e.reply(`插件已更新完成，但未找到 stdin 适配器，请手动发送 #重启。`)
           }
-
+          logger.info('[归龙潮插件] 更新成功。')
         } else {
           await e.reply('插件已经是最新版本。')
           await e.reply(forwardMsg)
+          logger.info('[归龙潮插件] 插件已是最新版本。')
         }
       } else {
         await e.reply('插件更新失败，详情见聊天记录。')
         await e.reply(forwardMsg)
+        logger.error('[归龙潮插件] 更新失败。')
       }
 
       return true
