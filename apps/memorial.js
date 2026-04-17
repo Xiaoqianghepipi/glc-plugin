@@ -46,12 +46,12 @@ export class Memorial extends plugin {
   constructor() {
     super({
       name: '归龙潮插件-扫墓',
-      dsc: '发送 2025.9.10 至今已过去时长的渲染图',
+      dsc: '给归龙潮上香',
       event: 'message',
       priority: 5000,
       rule: [
         {
-          reg: '^(&扫墓|#?归龙潮扫墓)$',
+          reg: '^(&(扫墓|上香|悼念|纪念|追悼|怀念)|#?归龙潮(扫墓|上香|悼念|纪念|追悼|怀念))$',
           fnc: 'sendMemorial',
         },
       ],
@@ -66,7 +66,7 @@ export class Memorial extends plugin {
       if (img) {
         await e.reply(img)
       } else {
-        await e.reply('扫墓图生成失败，请稍后再试。')
+        await e.reply('扫墓失败，请稍后再试。')
       }
 
       return true
