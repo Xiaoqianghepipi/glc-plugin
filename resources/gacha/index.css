@@ -1,0 +1,117 @@
+.container {
+  min-width: 760px;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255, 196, 87, 0.2), transparent 35%),
+    radial-gradient(circle at 85% 90%, rgba(106, 203, 255, 0.18), transparent 40%),
+    linear-gradient(145deg, #111827 0%, #0b1220 55%, #070c16 100%);
+  color: #f8fafc;
+  padding: 24px;
+}
+
+.container > .copyright {
+  display: none;
+}
+
+.gacha-card {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.66);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+  padding: 24px;
+}
+
+.gacha-title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.gacha-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.gacha-tag {
+  font-size: 14px;
+  font-weight: 700;
+  color: #102038;
+  background: linear-gradient(135deg, #f9d976 0%, #f39f86 100%);
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+
+.gacha-time {
+  font-size: 14px;
+  color: rgba(248, 250, 252, 0.72);
+}
+
+.gacha-name {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.gacha-banner {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fde68a;
+  padding: 6px 12px;
+  border: 1px solid rgba(253, 230, 138, 0.42);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.gacha-period {
+  font-size: 14px;
+  color: rgba(248, 250, 252, 0.76);
+  margin-bottom: 18px;
+}
+
+.char-single {
+  display: flex;
+  justify-content: center;
+}
+
+.char-item {
+  width: 280px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.7);
+  padding: 10px;
+}
+
+.char-avatar {
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 8px;
+  min-height: 160px;
+}
+
+.char-avatar img {
+  width: 100%;
+  display: block;
+}
+
+.char-name {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.empty {
+  font-size: 16px;
+  color: #fca5a5;
+  padding: 20px 0;
+}
+
+.plugin-info {
+  margin-top: 14px;
+  font-size: 13px;
+  color: rgba(248, 250, 252, 0.62);
+}

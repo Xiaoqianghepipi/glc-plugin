@@ -1,0 +1,38 @@
+{{extend defaultLayout}}
+
+{{block 'css'}}
+<link rel="stylesheet" type="text/css" href="{{_res_path}}gacha/index.css" />
+{{/block}}
+
+{{block 'main'}}
+<div class="gacha-card">
+  <div class="gacha-title">归龙潮卡池轮换</div>
+  <div class="gacha-meta-row">
+    <span class="gacha-tag">{{statusText}}</span>
+    <span class="gacha-time">统计时间：{{nowText}}</span>
+  </div>
+
+  {{if hasGacha}}
+  <div class="gacha-name">{{gachaName}}</div>
+  <div class="gacha-banner">{{banner}}</div>
+  <div class="gacha-period">{{startText}} ~ {{endText}}</div>
+
+  {{if characterImage}}
+  <div class="char-single">
+    <div class="char-item">
+      <div class="char-avatar">
+        <img src="{{_res_path}}{{characterImage}}" alt="{{characterName}}" />
+      </div>
+      <div class="char-name">{{characterName}}</div>
+    </div>
+  </div>
+  {{else}}
+  <div class="empty">未找到 {{characterName || '该角色'}} 的图片，请将同名图片放到 resources/character-detail</div>
+  {{/if}}
+  {{else}}
+  <div class="empty">暂未配置卡池数据，请编辑 resources/gacha/gacha.json</div>
+  {{/if}}
+
+  <div class="plugin-info">{{@sys.copyright}}</div>
+</div>
+{{/block}}
