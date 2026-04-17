@@ -18,6 +18,8 @@ git clone https://github.com/Xiaoqianghepipi/glc-plugin.git ./plugins/glc-plugin
 
 - 下载本仓库的 ZIP 包，解压后将文件夹重命名为 `glc-plugin`，然后移动到 Yunzai-Bot 的 `plugins/` 目录下。
 
+**安装完毕后记得重启**
+
 ## 功能
 
 - `&[角色名]攻略`：读取本地攻略图并发送。

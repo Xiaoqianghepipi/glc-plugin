@@ -1,0 +1,65 @@
+.container {
+  min-width: 680px;
+  min-height: 420px;
+  background: radial-gradient(circle at 20% 20%, #2d2b3d 0%, #1b1a28 35%, #0e0d14 100%);
+  color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.memorial-card {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 30px 28px;
+  background: rgba(0, 0, 0, 0.36);
+  text-align: center;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.36);
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 22px;
+  color: rgba(245, 245, 245, 0.9);
+  margin-bottom: 20px;
+}
+
+.days-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.days {
+  font-size: 92px;
+  font-weight: 800;
+  color: #ffd76a;
+  line-height: 1;
+  text-shadow: 0 4px 12px rgba(255, 215, 106, 0.28);
+}
+
+.days-unit {
+  font-size: 32px;
+  color: #ffd76a;
+  font-weight: 700;
+}
+
+.detail {
+  font-size: 26px;
+  color: rgba(245, 245, 245, 0.95);
+  margin-bottom: 12px;
+}
+
+.now {
+  font-size: 18px;
+  color: rgba(245, 245, 245, 0.72);
+}
