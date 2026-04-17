@@ -30,3 +30,9 @@ git clone https://github.com/Xiaoqianghepipi/glc-plugin.git ./plugins/glc-plugin
 - `&扫墓`：给牢归上香。
 - 支持使用锅巴配置设置
 - 还有更多~~坑还没填完~~......
+
+## 特别感谢
+
+- [Yunzai-plugin-skill](https://gitee.com/yeqiu6080/yunzai-plugin-skill)：让我的copliot会正确的写Yunzai插件了。
+- [归龙潮BWIKI](https://wiki.biligame.com/glc/%E9%A6%96%E9%A1%B5)：提供了部分攻略图。
+- 使用插件的每一个人
