@@ -9,7 +9,6 @@
   <div class="gacha-title">归龙潮卡池轮换</div>
   <div class="gacha-meta-row">
     <span class="gacha-tag">{{statusText}}</span>
-    <span class="gacha-time">统计时间：{{nowText}}</span>
   </div>
 
   {{if hasGacha}}
@@ -32,6 +31,9 @@
   <div class="empty">暂未配置卡池数据，请编辑 resources/gacha/gacha.json</div>
   {{/if}}
 
-  <div class="plugin-info">{{@sys.copyright}}</div>
+  <div class="gacha-footer">
+    <div class="gacha-time">统计时间：{{nowText}}</div>
+    <div class="plugin-info">{{@sys.copyright}}</div>
+  </div>
 </div>
 {{/block}}

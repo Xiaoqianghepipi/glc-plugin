@@ -1,11 +1,12 @@
 .container {
-  min-width: 760px;
   background:
     radial-gradient(circle at 12% 10%, rgba(255, 196, 87, 0.2), transparent 35%),
     radial-gradient(circle at 85% 90%, rgba(106, 203, 255, 0.18), transparent 40%),
     linear-gradient(145deg, #111827 0%, #0b1220 55%, #070c16 100%);
   color: #f8fafc;
   padding: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .container > .copyright {
@@ -18,7 +19,8 @@
   background: rgba(15, 23, 42, 0.66);
   backdrop-filter: blur(8px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
-  padding: 24px;
+  padding: 20px;
+  width: fit-content;
 }
 
 .gacha-title {
@@ -30,9 +32,9 @@
 
 .gacha-meta-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .gacha-tag {
@@ -69,7 +71,7 @@
 .gacha-period {
   font-size: 14px;
   color: rgba(248, 250, 252, 0.76);
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .char-single {
@@ -78,12 +80,12 @@
 }
 
 .char-item {
-  width: 280px;
+  width: 360px;
 }
 
 .char-avatar {
   overflow: hidden;
-  min-height: 160px;
+  min-height: 220px;
 }
 
 .char-avatar img {
@@ -98,7 +100,15 @@
 }
 
 .plugin-info {
-  margin-top: 14px;
   font-size: 13px;
   color: rgba(248, 250, 252, 0.62);
+}
+
+.gacha-footer {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.gacha-footer .gacha-time {
+  margin-bottom: 6px;
 }
