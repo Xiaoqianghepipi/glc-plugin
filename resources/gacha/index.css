@@ -19,7 +19,7 @@
   background: rgba(15, 23, 42, 0.66);
   backdrop-filter: blur(8px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
-  padding: 20px;
+  padding: 16px 4px;
   width: fit-content;
 }
 
@@ -28,6 +28,7 @@
   font-weight: 800;
   letter-spacing: 1px;
   margin-bottom: 12px;
+  padding: 0 16px;
 }
 
 .gacha-meta-row {
@@ -35,6 +36,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 12px;
+  padding: 0 16px;
 }
 
 .gacha-tag {
@@ -55,6 +57,7 @@
   font-size: 26px;
   font-weight: 800;
   margin-bottom: 8px;
+  padding: 0 16px;
 }
 
 .gacha-banner {
@@ -66,12 +69,14 @@
   border: 1px solid rgba(253, 230, 138, 0.42);
   border-radius: 10px;
   margin-bottom: 8px;
+  margin-left: 16px;
 }
 
 .gacha-period {
   font-size: 14px;
   color: rgba(248, 250, 252, 0.76);
   margin-bottom: 14px;
+  padding: 0 16px;
 }
 
 .char-single {
@@ -107,6 +112,7 @@
 .gacha-footer {
   text-align: center;
   margin-top: 12px;
+  padding: 0 16px;
 }
 
 .gacha-footer .gacha-time {
