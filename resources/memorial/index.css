@@ -76,6 +76,11 @@
 
 .game-logo {
   width: 120px;
-  margin-top: 20px;
-  align-self: center;
+  margin: 20px auto 12px;
+}
+
+.game-logo img {
+  border-radius: 5px;
+  display: block;
+  width: 100%;
 }
