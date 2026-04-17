@@ -73,3 +73,8 @@
   font-size: 18px;
   color: rgba(245, 245, 245, 0.72);
 }
+
+.game-logo {
+  width: 120px;
+  margin-top: 20px;
+}
