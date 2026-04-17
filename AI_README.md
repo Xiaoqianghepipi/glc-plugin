@@ -4,35 +4,37 @@
 
 ## 项目定位
 
-glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮插件，核心能力包括攻略图发送、帮助页渲染、渲染精度配置和插件更新。
+glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮插件，核心能力包括攻略图发送、帮助页渲染、扫墓纪念、渲染精度配置和插件更新。
 
 ## 目录说明
 
-- `index.js`：插件入口，统一导出 `Guide`、`Help`、`Setting`、`Update`。
+- `index.js`：插件入口，统一导出 `Guide`、`Help`、`Memorial`、`Setting`、`Update`。
 - `apps/`：业务功能模块，每个文件对应一个独立插件类。
-- `lib/`：公共配置、渲染、资源查找、设置读写和更新逻辑。
-- `resources/`：帮助页模板、公共布局、样式和攻略图片资源。
+- `lib/`：公共配置、渲染、资源查找、设置读写、帮助数据和更新逻辑。
+- `resources/`：帮助页、扫墓页模板、公共布局、样式和攻略图片资源。
 - `guoba/`：Guoba 配置面板支持。
 
 ## 插件架构
 
 ### 根目录
 
-- `index.js`：只负责从 `apps/` 汇总导出，不承载业务逻辑。
+- `index.js`：只负责从 `apps/` 汇总导出（`Guide`、`Help`、`Memorial`、`Setting`、`Update`），不承载业务逻辑。
 - `guoba.support.js`：对外导出 Guoba 支持入口。
 
 ### apps 目录
 
 - `apps/guide.js`：攻略查询模块，命令为 `&[角色名]攻略`，从本地 `resources/guide/` 查找攻略图。
 - `apps/help.js`：帮助页模块，命令为 `&帮助` 或 `#归龙潮帮助`，通过渲染器生成帮助图片。
+- `apps/memorial.js`：扫墓纪念模块，支持多个关键词触发（见下文功能说明），生成距离指定日期已过去时长的纪念图。
 - `apps/setting.js`：渲染精度设置模块，支持 `&设置渲染精度 <50-200>`、`#归龙潮设置渲染精度 <50-200>`、`&查看渲染精度`、`#归龙潮查看渲染精度`。
 - `apps/update.js`：插件更新模块，支持 `&更新`、`#归龙潮更新`，仅 master 可用。
 
 ### lib 目录
 
 - `lib/config.js`：插件名、版本、安装路径和资源路径常量。
-- `lib/render.js`：帮助页渲染入口，封装 Puppeteer 截图和渲染倍率计算。
+- `lib/render.js`：通用渲染入口，封装 Puppeteer 截图和渲染倍率计算。
 - `lib/help-data.js`：帮助页内容数据构造。
+- `lib/memorial-data.js`：扫墓页内容数据构造。
 - `lib/resource.js`：本地文件查找工具，按扩展名匹配攻略图。
 - `lib/settings.js`：渲染精度的读取、校验和持久化。
 - `lib/update.js`：插件更新逻辑，通常由更新命令调用。
@@ -45,6 +47,9 @@ glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮插件，核心能力包括
 - `resources/help/index.css`：帮助页样式。
 - `resources/help/imgs/`：帮助页图片资源。
 - `resources/guide/`：攻略图片目录，文件名通常对应角色名或内容名。
+- `resources/memorial/index.html`：扫墓页模板。
+- `resources/memorial/index.css`：扫墓页样式。
+- `resources/memorial/game-logo.png`：游戏图标（扫墓页显示）。
 
 ### guoba 目录
 
@@ -75,11 +80,18 @@ glc-plugin 是一个为 Yunzai-Bot 开发的归龙潮插件，核心能力包括
 - 行为：修改并持久化 `renderScale`，影响帮助图渲染倍率。
 - Guoba：也可通过 Guoba 配置面板修改同一项设置。
 
+### 扫墓纪念
+
+- 命令：支持多个关键词，缩写形式 `&扫墓`、`&上香`、`&悼念`、`&纪念`、`&追悼`、`&怀念`；完整形式 `#归龙潮扫墓`、`#归龙潮上香`、`#归龙潮悼念`、`#归龙潮纪念`、`#归龙潮追悼`、`#归龙潮怀念`。
+- 行为：计算自北京时间 2025-09-10 12:00:00 起至今已过去的天数、小时、分钟、秒，并渲染为图片发送。
+- 说明：包含游戏图标、倒计时天数、详细时间差和统计时间戳。
+
 ### 插件更新
 
 - 命令：`&更新`、`#归龙潮更新`
 - 权限：仅 master 可用。
-- 行为：执行插件更新，成功后尝试通过 stdin 发送 `#重启`。
+- 行为：执行插件更新，成功后 2 秒延迟再尝试通过 stdin 发送 `#重启`。
+- 反馈：更新过程和结果通过聊天记录（合并转发）返回。
 
 ## 编辑规范
 
