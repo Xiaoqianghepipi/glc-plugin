@@ -74,34 +74,21 @@
 
 .char-single {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .char-item {
   width: 280px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  background: rgba(2, 6, 23, 0.7);
-  padding: 10px;
 }
 
 .char-avatar {
-  border-radius: 10px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
-  margin-bottom: 8px;
   min-height: 160px;
 }
 
 .char-avatar img {
   width: 100%;
   display: block;
-}
-
-.char-name {
-  text-align: center;
-  font-size: 15px;
-  font-weight: 700;
 }
 
 .empty {
