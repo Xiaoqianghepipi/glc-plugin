@@ -1,5 +1,5 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import { buildMemorialData } from '../lib/memorial-data.js'
+import { buildRipData } from '../lib/rip-data.js'
 import render from '../lib/render.js'
 
 function pad2(n) {
@@ -42,7 +42,7 @@ function calcElapsed() {
   }
 }
 
-export class Memorial extends plugin {
+export class Rip extends plugin {
   constructor() {
     super({
       name: '归龙潮插件-扫墓',
@@ -51,17 +51,17 @@ export class Memorial extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^(&(扫墓|上香|悼念|纪念|追悼|怀念)|#?归龙潮(扫墓|上香|悼念|纪念|追悼|怀念))$',
-          fnc: 'sendMemorial',
+          reg: '^&(扫墓|上香|悼念|纪念|追悼|怀念)$',
+          fnc: 'sendRip',
         },
       ],
     })
   }
 
-  async sendMemorial(e) {
+  async sendRip(e) {
     try {
-      const data = buildMemorialData(calcElapsed())
-      const img = await render(e, 'memorial', data)
+      const data = buildRipData(calcElapsed())
+      const img = await render(e, 'rip', data)
 
       if (img) {
         await e.reply(img)

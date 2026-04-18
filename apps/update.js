@@ -59,7 +59,7 @@ export class Update extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^(&更新|#?归龙潮更新)$',
+          reg: '^&更新$',
           fnc: 'update',
           permission: 'master'
         }

@@ -8,6 +8,8 @@
 
 1. 推荐使用 Git 克隆本仓库到 Yunzai-Bot 的 `plugins/` 目录下，以方便后续升级。
 
+    **先进入 Yunzai-Bot 根目录再执行以下命令**
+
 - 使用GitHub
 
 ```sh
