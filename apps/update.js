@@ -50,6 +50,15 @@ function buildForwardMessage(e, title, content) {
   return globalThis.Bot?.makeForwardMsg ? globalThis.Bot.makeForwardMsg(nodes) : text
 }
 
+function buildRecentCommitSection(recentCommits = []) {
+  if (!Array.isArray(recentCommits) || !recentCommits.length) {
+    return ''
+  }
+
+  const lines = recentCommits.map((item, index) => `${index + 1}. ${item}`)
+  return `最近 commits：\n${lines.join('\n')}`
+}
+
 export class Update extends plugin {
   constructor() {
     super({
@@ -73,7 +82,9 @@ export class Update extends plugin {
       logger.info('[归龙潮插件] 开始执行更新...')
 
       const result = await updatePlugin()
-      const forwardMsg = buildForwardMessage(e, '归龙潮插件更新日志', result.output)
+      const commitSection = buildRecentCommitSection(result.recentCommits)
+      const detail = [result.output, commitSection].filter(Boolean).join('\n\n')
+      const forwardMsg = buildForwardMessage(e, '归龙潮插件更新日志', detail)
 
       if (result.ok) {
         if (result.updated) {
