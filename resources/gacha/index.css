@@ -55,11 +55,19 @@
   color: rgba(248, 250, 252, 0.72);
 }
 
+.gacha-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
 .gacha-name {
   font-size: 38px;
   font-weight: 800;
-  margin-bottom: 10px;
-  text-align: center;
+  margin-bottom: 0;
+  text-align: left;
 }
 
 .gacha-banner {
@@ -71,7 +79,7 @@
   padding: 8px 16px;
   border: 1px solid rgba(253, 230, 138, 0.42);
   border-radius: 10px;
-  margin: 0 auto 10px;
+  margin: 0;
 }
 
 .gacha-period {

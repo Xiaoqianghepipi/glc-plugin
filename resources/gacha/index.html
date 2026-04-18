@@ -6,14 +6,16 @@
 
 {{block 'main'}}
 <div class="gacha-card">
-  <div class="gacha-title">归龙潮卡池轮换</div>
+  <!-- <div class="gacha-title">归龙潮当期卡池</div> -->
   <div class="gacha-meta-row">
     <span class="gacha-tag">{{statusText}}</span>
   </div>
 
   {{if hasGacha}}
-  <div class="gacha-name">{{gachaName}}</div>
-  <div class="gacha-banner">{{banner}}</div>
+  <div class="gacha-head-row">
+    <div class="gacha-name">{{gachaName}}</div>
+    <div class="gacha-banner">{{banner}}</div>
+  </div>
   <div class="gacha-period">{{startText}} ~ {{endText}}</div>
 
   {{if characterImage}}
@@ -32,7 +34,7 @@
   {{/if}}
 
   <div class="gacha-footer">
-    <div class="gacha-time">统计时间：{{nowText}}</div>
+    <div class="gacha-time">生成时间：{{nowText}}</div>
     <div class="plugin-info">{{@sys.copyright}}</div>
   </div>
 </div>
