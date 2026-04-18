@@ -18,9 +18,9 @@
 .gacha-card {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 16px;
-  filter: blur(10px);
-  background: rgba(15, 23, 42, 0.197);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.28);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
   padding: 31px 21px;
   width: min(98vw, 1120px);
@@ -58,8 +58,8 @@
 .gacha-head-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: flex-start;
+  gap: 8px;
   margin-bottom: 10px;
 }
 
