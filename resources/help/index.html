@@ -28,6 +28,11 @@
       <div class="command-list" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
         {{each group.list item}}
         <div class="command-item">
+          <div class="cmd-avatar">
+            {{if item.avatar}}
+            <img src="{{_res_path}}help/imgs/{{item.avatar}}" alt="角色头像" />
+            {{/if}}
+          </div>
           <div class="cmd-title">{{item.title}}</div>
           <div class="cmd-desc">{{item.desc}}</div>
         </div>
