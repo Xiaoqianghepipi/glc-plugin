@@ -58,7 +58,7 @@
 .gacha-head-row {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 8px;
   margin-bottom: 10px;
 }
