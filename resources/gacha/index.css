@@ -4,7 +4,7 @@
     radial-gradient(circle at 85% 90%, rgba(106, 203, 255, 0.18), transparent 40%),
     linear-gradient(145deg, #111827 0%, #0b1220 55%, #070c16 100%);
   color: #f8fafc;
-  padding: 24px 0;
+  padding: 10px 0;
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -21,15 +21,15 @@
   background: rgba(15, 23, 42, 0.66);
   backdrop-filter: blur(8px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
-  padding: 20px;
-  width: fit-content;
+  padding: 16px 6px;
+  width: min(98vw, 1120px);
 }
 
 .gacha-title {
-  font-size: 34px;
+  font-size: 44px;
   font-weight: 800;
   letter-spacing: 1px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .gacha-meta-row {
@@ -37,61 +37,62 @@
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 12px;
-  padding: 0 16px;
+  padding: 0 10px;
 }
 
 .gacha-tag {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 700;
   color: #102038;
   background: linear-gradient(135deg, #f9d976 0%, #f39f86 100%);
   border-radius: 999px;
-  padding: 6px 12px;
+  padding: 8px 16px;
 }
 
 .gacha-time {
-  font-size: 14px;
+  font-size: 18px;
   color: rgba(248, 250, 252, 0.72);
 }
 
 .gacha-name {
-  font-size: 26px;
+  font-size: 38px;
   font-weight: 800;
-  margin-bottom: 8px;
-  padding: 0 16px;
+  margin-bottom: 10px;
+  padding: 0 10px;
 }
 
 .gacha-banner {
   display: inline-block;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 700;
   color: #fde68a;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border: 1px solid rgba(253, 230, 138, 0.42);
   border-radius: 10px;
-  margin-bottom: 8px;
-  margin-left: 16px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
 
 .gacha-period {
-  font-size: 14px;
+  font-size: 22px;
   color: rgba(248, 250, 252, 0.76);
-  margin-bottom: 14px;
-  padding: 0 16px;
+  margin-bottom: 18px;
+  padding: 0 10px;
 }
 
 .char-single {
   display: flex;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .char-item {
-  width: 360px;
+  width: 100%;
 }
 
 .char-avatar {
   overflow: hidden;
-  min-height: 220px;
+  min-height: 300px;
 }
 
 .char-avatar img {
@@ -100,22 +101,22 @@
 }
 
 .empty {
-  font-size: 16px;
+  font-size: 22px;
   color: #fca5a5;
   padding: 20px 0;
 }
 
 .plugin-info {
-  font-size: 13px;
+  font-size: 18px;
   color: rgba(248, 250, 252, 0.62);
 }
 
 .gacha-footer {
   text-align: center;
-  margin-top: 12px;
-  padding: 0 16px;
+  margin-top: 16px;
+  padding: 0 10px;
 }
 
 .gacha-footer .gacha-time {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
