@@ -1,5 +1,5 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import { updatePlugin } from '../lib/update.js'
+import { forceUpdatePlugin, updatePlugin } from '../lib/update.js'
 
 async function restartByStdinCommand() {
   try {
@@ -71,24 +71,35 @@ export class Update extends plugin {
           reg: '^&更新$',
           fnc: 'update',
           permission: 'master'
+        },
+        {
+          reg: '^&强制更新$',
+          fnc: 'forceUpdate',
+          permission: 'master'
         }
       ]
     })
   }
 
-  async update(e) {
+  async executeUpdate(e, isForce = false) {
     try {
-      await e.reply(`归龙潮插件正在更新......`)
-      logger.info('[归龙潮插件] 开始执行更新...')
+      if (isForce) {
+        await e.reply('归龙潮插件正在强制更新......（将忽略常见拉取冲突并同步远端版本）')
+        logger.info('[归龙潮插件] 开始执行强制更新...')
+      } else {
+        await e.reply('归龙潮插件正在更新......')
+        logger.info('[归龙潮插件] 开始执行更新...')
+      }
 
-      const result = await updatePlugin()
+      const result = isForce ? await forceUpdatePlugin() : await updatePlugin()
       const commitSection = buildRecentCommitSection(result.recentCommits)
       const detail = [result.output, commitSection].filter(Boolean).join('\n\n')
-      const forwardMsg = buildForwardMessage(e, '归龙潮插件更新日志', detail)
+      const title = isForce ? '归龙潮插件强制更新日志' : '归龙潮插件更新日志'
+      const forwardMsg = buildForwardMessage(e, title, detail)
 
       if (result.ok) {
         if (result.updated) {
-          await e.reply('插件已更新完成，更新日志如下。即将自动重启。')
+          await e.reply(isForce ? '插件强制更新完成，更新日志如下。即将自动重启。' : '插件已更新完成，更新日志如下。即将自动重启。')
           await e.reply(forwardMsg)
 
           await sleep(2000)
@@ -96,23 +107,35 @@ export class Update extends plugin {
           if (!sent) {
             await e.reply(`插件已更新完成，但未找到 stdin 适配器，请手动发送 #重启。`)
           }
-          logger.info('[归龙潮插件] 更新成功。')
+          logger.info(isForce ? '[归龙潮插件] 强制更新成功。' : '[归龙潮插件] 更新成功。')
         } else {
-          await e.reply('插件已经是最新版本。')
+          await e.reply(isForce ? '强制同步完成，当前已与远端一致。' : '插件已经是最新版本。')
           await e.reply(forwardMsg)
-          logger.info('[归龙潮插件] 插件已是最新版本。')
+          logger.info(isForce ? '[归龙潮插件] 强制同步完成，无新增提交。' : '[归龙潮插件] 插件已是最新版本。')
         }
       } else {
-        await e.reply('插件更新失败，详情见聊天记录。')
+        if (isForce) {
+          await e.reply('插件强制更新失败，详情见聊天记录。')
+        } else {
+          await e.reply('插件更新失败，详情见聊天记录。可尝试使用 &强制更新。')
+        }
         await e.reply(forwardMsg)
-        logger.error('[归龙潮插件] 更新失败。')
+        logger.error(isForce ? '[归龙潮插件] 强制更新失败。' : '[归龙潮插件] 更新失败。')
       }
 
       return true
     } catch (err) {
-      logger.error('[归龙潮插件] 插件更新异常:', err)
-      await e.reply(`插件更新异常：${err.message}`)
+      logger.error(isForce ? '[归龙潮插件] 插件强制更新异常:' : '[归龙潮插件] 插件更新异常:', err)
+      await e.reply(isForce ? `插件强制更新异常：${err.message}` : `插件更新异常：${err.message}`)
       return false
     }
+  }
+
+  async update(e) {
+    return this.executeUpdate(e, false)
+  }
+
+  async forceUpdate(e) {
+    return this.executeUpdate(e, true)
   }
 }
