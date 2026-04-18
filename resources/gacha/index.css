@@ -18,7 +18,8 @@
 .gacha-card {
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 16px;
-  background: rgba(15, 23, 42, 0.66);
+  filter: blur(10px);
+  background: rgba(15, 23, 42, 0.197);
   backdrop-filter: blur(8px);
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
   padding: 31px 21px;
@@ -96,6 +97,7 @@
 }
 
 .char-avatar img {
+  border-radius: 5px;
   width: 100%;
   display: block;
 }
