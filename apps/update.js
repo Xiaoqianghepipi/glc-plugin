@@ -68,12 +68,12 @@ export class Update extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^&更新$',
+          reg: '^[&＆]更新$',
           fnc: 'update',
           permission: 'master'
         },
         {
-          reg: '^&强制更新$',
+          reg: '^[&＆]强制更新$',
           fnc: 'forceUpdate',
           permission: 'master'
         }

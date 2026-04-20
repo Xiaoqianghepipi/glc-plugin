@@ -11,7 +11,7 @@ export class Guide extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^&(.+)攻略$',
+          reg: '^[&＆](.+)攻略$',
           fnc: 'sendGuide'
         }
       ]
@@ -20,7 +20,7 @@ export class Guide extends plugin {
 
   async sendGuide(e) {
     try {
-      const match = e.msg.match(/^&(.+)攻略$/)
+      const match = e.msg.match(/^[&＆](.+)攻略$/)
       if (!match || !match[1]) return false
 
       const name = match[1].trim()

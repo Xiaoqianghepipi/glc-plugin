@@ -52,7 +52,7 @@ export class Rip extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^&(扫墓|上香|悼念|纪念|追悼|怀念)$',
+          reg: '^[&＆](扫墓|上香|悼念|纪念|追悼|怀念)$',
           fnc: 'sendRip',
         },
       ],

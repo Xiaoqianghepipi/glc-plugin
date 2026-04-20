@@ -10,12 +10,12 @@ export class Setting extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^&设置渲染精度\\s*([0-9]{1,3})%?$',
+          reg: '^[&＆]设置渲染精度\\s*([0-9]{1,3})%?$',
           fnc: 'setScale',
           permission: 'master'
         },
         {
-          reg: '^&查看渲染精度$',
+          reg: '^[&＆]查看渲染精度$',
           fnc: 'showScale'
         }
       ]
@@ -23,7 +23,7 @@ export class Setting extends plugin {
   }
 
   async setScale(e) {
-    const match = e.msg.match(/^&设置渲染精度\s*([0-9]{1,3})%?$/)
+    const match = e.msg.match(/^[&＆]设置渲染精度\s*([0-9]{1,3})%?$/)
     if (!match) return false
 
     const result = setRenderScale(match[1])

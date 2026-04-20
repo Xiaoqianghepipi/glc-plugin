@@ -11,7 +11,7 @@ export class Help extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^(&帮助|#?归龙潮帮助)$',
+          reg: '^([&＆]帮助|#?归龙潮帮助)$',
           fnc: 'sendHelp'
         }
       ]

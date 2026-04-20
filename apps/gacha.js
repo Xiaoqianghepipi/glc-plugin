@@ -11,7 +11,7 @@ export class Gacha extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^&(卡池|卡池轮换)$',
+          reg: '^[&＆](卡池|卡池轮换)$',
           fnc: 'sendGacha',
         },
       ],
