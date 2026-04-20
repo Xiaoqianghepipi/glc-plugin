@@ -21,6 +21,7 @@ function formatNow(ts) {
 function calcElapsed() {
   const startTime = new Date('2025-09-10T12:00:00+08:00').getTime()
   const now = Date.now()
+  const nowText = formatNow(now)
   const diff = Math.max(0, now - startTime)
 
   const dayMs = 24 * 60 * 60 * 1000
@@ -38,7 +39,7 @@ function calcElapsed() {
     hours,
     minutes,
     seconds,
-    nowText: formatNow(now),
+    nowText,
   }
 }
 
