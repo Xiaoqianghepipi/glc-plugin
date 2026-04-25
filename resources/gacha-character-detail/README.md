@@ -1,4 +1,4 @@
-# character-detail 目录说明
+# gacha-character-detail 目录说明
 
 该目录用于存放卡池角色详情图。
 
