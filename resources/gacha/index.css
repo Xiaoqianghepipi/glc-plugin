@@ -89,6 +89,14 @@
   text-align: center;
 }
 
+.gacha-countdown {
+  font-size: 20px;
+  color: #fde68a;
+  background: linear-gradient(135deg, #f9d976 0%, #f39f86 100%);
+  margin-bottom: 18px;
+  text-align: center;
+}
+
 .char-single {
   display: flex;
   justify-content: flex-start;
