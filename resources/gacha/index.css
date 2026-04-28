@@ -91,16 +91,9 @@
 
 .gacha-countdown {
   font-size: 20px;
-  border-radius: 999px;
-  color: #5c5433;
-  background: linear-gradient(135deg, #f9d976 0%, #f39f86 100%);
+  color: #ffbb00;
   margin-bottom: 18px;
   text-align: center;
-  padding: 8px 16px;
-  font-weight: 700;
-  justify-content: center;
-  display: flex;
-  width: 80%;
 }
 
 .char-single {
