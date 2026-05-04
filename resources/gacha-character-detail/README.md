@@ -1,4 +1,4 @@
-# gacha-character-detail 目录说明
+# 目录说明
 
 该目录用于存放卡池角色详情图。
 
@@ -16,13 +16,3 @@
 - .jpg
 - .jpeg
 - .gif
-
-## 卡池数据写法
-
-在 resources/gacha/gacha.json 里，只需要填写角色名：
-
-{
-  "character": "导演"
-}
-
-插件会自动去本目录按角色名匹配同名图片。
