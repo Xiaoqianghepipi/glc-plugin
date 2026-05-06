@@ -28,7 +28,7 @@
     </div>
   </div>
   {{else}}
-  <div class="empty">未找到 {{characterName || '该角色'}} 的图片，请将同名图片放到 resources/gacha-character-detail</div>
+  <div class="empty">未找到 {{characterName || '该角色'}} 的图片，请将图片放到 resources/gacha-character-detail/{{characterName || '角色名'}}/ 下</div>
   {{/if}}
   {{else}}
   <div class="empty">暂未配置卡池数据，请编辑 resources/gacha/gacha.json</div>
