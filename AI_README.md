@@ -58,7 +58,7 @@ index.js 统一导出以下模块：
 - resources/help/index.html 与 resources/help/index.css: 帮助页
 - resources/gacha/index.html 与 resources/gacha/index.css: 卡池页
 - resources/gacha/gacha.json: 卡池配置数据
-- resources/gacha-character-detail/: 卡池角色图目录，按角色名子文件夹存放图片，系统会随机取一张
+- resources/gacha/imgs/character-detail/: 卡池角色图目录，按角色名子文件夹存放图片，系统会随机取一张
 - resources/guide/: 攻略图目录
 - resources/rip/index.html 与 resources/rip/index.css: 扫墓页
 - resources/rip/game-logo.png: 扫墓页图标
@@ -92,7 +92,7 @@ resources/gacha/gacha.json 使用 gachas 数组，每个卡池项推荐字段：
 - end: 结束时间（带时区）
 - character: 角色名字符串
 
-角色图片不在 gacha.json 中硬编码路径。系统会到 resources/gacha-character-detail 中按角色名子文件夹读取图片并随机抽取一张发送（支持 .webp .png .jpg .jpeg .gif）。
+角色图片不在 gacha.json 中硬编码路径。系统会到 resources/gacha/imgs/character-detail 中按角色名子文件夹读取图片并随机抽取一张发送（支持 .webp .png .jpg .jpeg .gif）。
 
 ## 扫墓页面规则
 
