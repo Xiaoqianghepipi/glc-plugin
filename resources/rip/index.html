@@ -2,12 +2,37 @@
 
 {{block 'css'}}
 <link rel="stylesheet" type="text/css" href="{{_res_path}}rip/index.css" />
+<style>
+  .container {
+    background: url("{{_res_path}}rip/imgs/background.jpg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(8px);
+    z-index: -1;
+  }
+
+  .container > .copyright {
+    display: none;
+  }
+</style>
 {{/block}}
 
 {{block 'main'}}
 <div class="rip-card">
   <div class="title">🕯归龙潮🕯</div>
-  <div class="game-logo"><img src="{{_res_path}}rip/game-logo.png" alt="归龙潮图标" /></div>
+  <div class="game-logo"><img src="{{_res_path}}rip/imgs/game-logo.png" alt="归龙潮图标" /></div>
   <div class="subtitle">从归龙潮宣布停运（{{targetDate}}）到现在，已经过去</div>
 
   <div class="days-wrap">
