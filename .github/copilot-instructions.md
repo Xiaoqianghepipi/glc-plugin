@@ -59,7 +59,7 @@ index.js 统一导出以下模块：
 - resources/gacha/index.html 与 resources/gacha/index.css: 卡池页
 - resources/gacha/gacha.json: 卡池配置数据
 - resources/gacha/imgs/character-detail/: 卡池角色图目录，按角色名子文件夹存放图片，系统会随机取一张
-- resources/guide/: 攻略图目录
+- resources/guide/imgs/: 攻略图目录，按角色名子文件夹存放图片，系统会将该目录下所有图片打包成聊天记录发送
 - resources/rip/index.html 与 resources/rip/index.css: 扫墓页
 - resources/rip/imgs/: 扫墓页图片资源目录
 
