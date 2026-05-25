@@ -1,6 +1,6 @@
 <img decoding="async" align=right src="icon.png" alt="插件图标" width="35%" max-width="200px" />
 
-# GLC-PLUGIN
+# GLC-PLUGIN （归龙潮Yunzai插件）
 
 - 基于 Yunzai 的归龙潮游戏查询插件
 
