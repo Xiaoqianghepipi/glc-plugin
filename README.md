@@ -1,6 +1,6 @@
 <img decoding="async" align=right src="icon.png" alt="插件图标" width="35%" max-width="200px" />
 
-# GLC-PLUGIN
+# GLC-PLUGIN （归龙潮Yunzai插件）
 
 - 基于 Yunzai 的归龙潮游戏查询插件
 
@@ -26,9 +26,9 @@ git clone https://github.com/Xiaoqianghepipi/glc-plugin.git ./plugins/glc-plugin
 
 - `&帮助` 或 `#归龙潮帮助`：渲染帮助图并发送。
 - `&[角色名]攻略`：读取本地攻略图并发送。
-- `&设置渲染精度 100`：设置图片渲染精度（50~200%）。
+- `&设置渲染精度 100`：设置图片渲染精度（50~200）。
 - `&查看渲染精度`：查看当前图片渲染精度。
-- `&更新`：拉取插件最新代码并提示更新结果，仅管理员可用。
+- `&更新`：更新插件，仅主人可用。
 - `&扫墓`：给牢归上香。
 - 支持使用锅巴配置设置
 - 还有更多~~坑还没填完~~......
