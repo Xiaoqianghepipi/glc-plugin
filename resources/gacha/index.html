@@ -49,6 +49,21 @@
     <div class="char-item">
       <div class="char-avatar">
         <img src="{{_res_path}}{{characterImage}}" alt="{{characterName}}" />
+        <div class="gacha-overlay">
+          <div class="overlay-top">
+            <div class="overlay-name">{{characterName}}</div>
+            {{if stampText}}
+            <div class="overlay-stamp">{{stampText}}</div>
+            {{/if}}
+            <div class="overlay-mark"></div>
+          </div>
+          <div class="overlay-sub">[{{gachaName}}] {{banner}}：{{startShort}}-{{endShort}}</div>
+          <div class="overlay-title">{{gachaName}}</div>
+          {{if signature}}
+          <div class="overlay-signature">{{signature}}</div>
+          {{/if}}
+          <div class="overlay-logo">归龙潮</div>
+        </div>
       </div>
     </div>
   </div>

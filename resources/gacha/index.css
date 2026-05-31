@@ -105,12 +105,114 @@
 .char-avatar {
   overflow: hidden;
   min-height: 300px;
+  position: relative;
 }
 
 .char-avatar img {
   border-radius: 5px;
   width: 100%;
   display: block;
+}
+
+.gacha-overlay {
+  position: absolute;
+  inset: 0;
+  color: #f8fafc;
+  pointer-events: none;
+}
+
+.gacha-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.15) 48%, rgba(15, 23, 42, 0) 70%);
+}
+
+.overlay-top {
+  position: absolute;
+  left: clamp(18px, 4vw, 48px);
+  top: clamp(20px, 6vw, 64px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1;
+}
+
+.overlay-name {
+  font-size: clamp(30px, 6.2vw, 64px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+}
+
+.overlay-stamp {
+  font-size: clamp(18px, 3vw, 30px);
+  font-weight: 700;
+  width: clamp(30px, 5vw, 46px);
+  height: clamp(30px, 5vw, 46px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f87171;
+  border: 2px solid rgba(248, 113, 113, 0.9);
+  background: rgba(248, 113, 113, 0.12);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-mark {
+  width: clamp(18px, 3.2vw, 26px);
+  height: clamp(18px, 3.2vw, 26px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fde68a, #f59e0b 70%);
+  box-shadow: 0 6px 12px rgba(245, 158, 11, 0.5);
+}
+
+.overlay-sub {
+  position: absolute;
+  left: clamp(18px, 4vw, 48px);
+  top: clamp(86px, 12vw, 150px);
+  font-size: clamp(12px, 2.4vw, 20px);
+  color: rgba(248, 250, 252, 0.9);
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(248, 250, 252, 0.2);
+  z-index: 1;
+}
+
+.overlay-title {
+  position: absolute;
+  left: clamp(18px, 4vw, 48px);
+  top: clamp(120px, 16vw, 214px);
+  font-size: clamp(24px, 5.2vw, 50px);
+  font-weight: 700;
+  color: #f5d089;
+  letter-spacing: 2px;
+  text-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.overlay-signature {
+  position: absolute;
+  left: clamp(22px, 4.4vw, 56px);
+  top: clamp(158px, 20vw, 260px);
+  font-size: clamp(12px, 2.8vw, 22px);
+  color: rgba(248, 113, 113, 0.9);
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.overlay-logo {
+  position: absolute;
+  right: clamp(18px, 4vw, 36px);
+  top: clamp(18px, 4vw, 36px);
+  font-size: clamp(18px, 3.4vw, 30px);
+  font-weight: 700;
+  writing-mode: vertical-rl;
+  letter-spacing: 4px;
+  color: rgba(248, 250, 252, 0.88);
+  text-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .empty {
