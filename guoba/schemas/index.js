@@ -1,4 +1,5 @@
-import { getSettings, setRenderScale } from '../../lib/settings.js'
+import { getSettings, setRenderScale, setGachaAutoFetchConfig } from '../../lib/settings.js'
+import { refreshGachaSchedule } from '../../lib/gacha-schedule.js'
 
 export const schemas = [
   {
@@ -12,12 +13,30 @@ export const schemas = [
     defaultValue: 100,
     bottomHelpMessage: '范围 50~200，数值越大图片越清晰，但是渲染耗时也会增加。',
   },
+  {
+    field: 'gachaAutoFetchEnabled',
+    label: '卡池定时拉取',
+    component: 'Switch',
+    required: true,
+    defaultValue: false,
+    bottomHelpMessage: '开启后按 Cron 定时拉取最新卡池信息。',
+  },
+  {
+    field: 'gachaAutoFetchCron',
+    label: '卡池拉取 Cron',
+    component: 'Input',
+    required: true,
+    defaultValue: '30 12 * * *',
+    bottomHelpMessage: 'Cron 表达式（5 段），默认每天 12:30。',
+  },
 ]
 
 export function getConfigData() {
   const settings = getSettings()
   return {
     renderScale: settings.renderScale,
+    gachaAutoFetchEnabled: settings.gachaAutoFetchEnabled,
+    gachaAutoFetchCron: settings.gachaAutoFetchCron,
   }
 }
 
@@ -25,28 +44,55 @@ export function setConfigData(data, ctx = {}) {
   const nextScale = Number(data?.renderScale)
   const result = setRenderScale(nextScale)
 
+  if (!result.ok) {
+    if (ctx.Result?.error) {
+      return ctx.Result.error(result.message)
+    }
+
+    return {
+      ok: false,
+      message: result.message,
+    }
+  }
+
+  const gachaResult = setGachaAutoFetchConfig({
+    gachaAutoFetchEnabled: data?.gachaAutoFetchEnabled,
+    gachaAutoFetchCron: data?.gachaAutoFetchCron,
+  })
+
+  if (!gachaResult.ok) {
+    if (ctx.Result?.error) {
+      return ctx.Result.error(gachaResult.message)
+    }
+
+    return {
+      ok: false,
+      message: gachaResult.message,
+    }
+  }
+
+  const scheduleResult = refreshGachaSchedule()
+  const mergedMessage = [result.message, gachaResult.message, scheduleResult.message]
+    .filter(Boolean)
+    .join('\n')
+
   if (result.ok) {
     if (ctx.Result?.ok) {
       return ctx.Result.ok({
         renderScale: result.value,
-      }, result.message)
+        gachaAutoFetchEnabled: gachaResult.value.gachaAutoFetchEnabled,
+        gachaAutoFetchCron: gachaResult.value.gachaAutoFetchCron,
+      }, mergedMessage || result.message)
     }
 
     return {
       ok: true,
-      message: result.message,
+      message: mergedMessage || result.message,
       data: {
         renderScale: result.value,
+        gachaAutoFetchEnabled: gachaResult.value.gachaAutoFetchEnabled,
+        gachaAutoFetchCron: gachaResult.value.gachaAutoFetchCron,
       },
     }
-  }
-
-  if (ctx.Result?.error) {
-    return ctx.Result.error(result.message)
-  }
-
-  return {
-    ok: false,
-    message: result.message,
   }
 }

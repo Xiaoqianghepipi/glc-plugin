@@ -1,5 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { updateGachaDataFromRemote } from '../lib/gacha-data-update.js'
+import { initGachaSchedule } from '../lib/gacha-schedule.js'
 
 const gachaRemoteUrl = 'https://github.com/Xiaoqianghepipi/glc-plugin/blob/main/resources/gacha/gacha.json'
 
@@ -18,6 +19,8 @@ export class GachaDataUpdate extends plugin {
         },
       ],
     })
+
+    initGachaSchedule()
   }
 
   async updateGacha(e) {
