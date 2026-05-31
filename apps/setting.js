@@ -91,7 +91,7 @@ export class Setting extends plugin {
   async showGachaAutoFetch(e) {
     const settings = getSettings()
     const status = settings.gachaAutoFetchEnabled ? '已开启' : '已关闭'
-    await e.reply(`卡池定时拉取：${status}\nCron：${settings.gachaAutoFetchCron}`)
+    await e.reply(`卡池定时拉取：${status}\nQuartz Cron：${settings.gachaAutoFetchCron}`)
     return true
   }
 }

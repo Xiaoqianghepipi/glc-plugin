@@ -17,8 +17,8 @@ export const schemas = [
     field: 'gachaAutoFetchEnabled',
     label: '卡池定时拉取',
     component: 'Switch',
-    required: true,
-    defaultValue: false,
+    defaultValue: '0 30 12 * * ? *',
+    bottomHelpMessage: 'Quartz Cron（7 段），默认每天 12:30。',
     bottomHelpMessage: '开启后定时拉取最新卡池信息。',
   },
   {
