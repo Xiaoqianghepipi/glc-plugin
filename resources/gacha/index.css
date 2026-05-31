@@ -202,16 +202,15 @@
   z-index: 1;
 }
 
-.overlay-logo {
+.overlay-icon {
   position: absolute;
-  right: clamp(18px, 4vw, 36px);
-  top: clamp(18px, 4vw, 36px);
-  font-size: clamp(18px, 3.4vw, 30px);
-  font-weight: 700;
-  writing-mode: vertical-rl;
-  letter-spacing: 4px;
-  color: rgba(248, 250, 252, 0.88);
-  text-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+  left: clamp(18px, 3.8vw, 44px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(44px, 8vw, 90px);
+  height: clamp(44px, 8vw, 90px);
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45));
   z-index: 1;
 }
 
