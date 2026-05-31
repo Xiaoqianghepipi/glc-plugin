@@ -19,15 +19,23 @@ export const schemas = [
     component: 'Switch',
     required: true,
     defaultValue: false,
-    bottomHelpMessage: '开启后按 Cron 定时拉取最新卡池信息。',
+    bottomHelpMessage: '开启后定时拉取最新卡池信息。',
   },
   {
     field: 'gachaAutoFetchCron',
     label: '卡池拉取 Cron',
-    component: 'Input',
+    component: 'EasyCron',
     required: true,
     defaultValue: '30 12 * * *',
-    bottomHelpMessage: 'Cron 表达式（5 段），默认每天 12:30。',
+    bottomHelpMessage: '默认每天12:30拉取一次。',
+  },
+  {
+    field: 'gachaAutoFetchUrl',
+    label: '卡池拉取地址',
+    component: 'Input',
+    required: true,
+    defaultValue: 'https://github.com/Xiaoqianghepipi/glc-plugin/blob/main/resources/gacha/gacha.json',
+    bottomHelpMessage: '云端 gacha.json 地址。',
   },
 ]
 
@@ -37,6 +45,7 @@ export function getConfigData() {
     renderScale: settings.renderScale,
     gachaAutoFetchEnabled: settings.gachaAutoFetchEnabled,
     gachaAutoFetchCron: settings.gachaAutoFetchCron,
+    gachaAutoFetchUrl: settings.gachaAutoFetchUrl,
   }
 }
 
@@ -58,6 +67,7 @@ export function setConfigData(data, ctx = {}) {
   const gachaResult = setGachaAutoFetchConfig({
     gachaAutoFetchEnabled: data?.gachaAutoFetchEnabled,
     gachaAutoFetchCron: data?.gachaAutoFetchCron,
+    gachaAutoFetchUrl: data?.gachaAutoFetchUrl,
   })
 
   if (!gachaResult.ok) {
@@ -82,6 +92,7 @@ export function setConfigData(data, ctx = {}) {
         renderScale: result.value,
         gachaAutoFetchEnabled: gachaResult.value.gachaAutoFetchEnabled,
         gachaAutoFetchCron: gachaResult.value.gachaAutoFetchCron,
+        gachaAutoFetchUrl: gachaResult.value.gachaAutoFetchUrl,
       }, mergedMessage || result.message)
     }
 
@@ -92,6 +103,7 @@ export function setConfigData(data, ctx = {}) {
         renderScale: result.value,
         gachaAutoFetchEnabled: gachaResult.value.gachaAutoFetchEnabled,
         gachaAutoFetchCron: gachaResult.value.gachaAutoFetchCron,
+        gachaAutoFetchUrl: gachaResult.value.gachaAutoFetchUrl,
       },
     }
   }

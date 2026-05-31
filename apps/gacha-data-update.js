@@ -1,8 +1,7 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import { updateGachaDataFromRemote } from '../lib/gacha-data-update.js'
 import { initGachaSchedule } from '../lib/gacha-schedule.js'
-
-const gachaRemoteUrl = 'https://github.com/Xiaoqianghepipi/glc-plugin/blob/main/resources/gacha/gacha.json'
+import { getSettings } from '../lib/settings.js'
 
 export class GachaDataUpdate extends plugin {
   constructor() {
@@ -27,7 +26,8 @@ export class GachaDataUpdate extends plugin {
     try {
       await e.reply('正在拉取最新卡池信息，请稍候...')
 
-      const result = await updateGachaDataFromRemote(gachaRemoteUrl)
+      const settings = getSettings()
+      const result = await updateGachaDataFromRemote(settings.gachaAutoFetchUrl)
       if (result.ok) {
         await e.reply(result.message)
       } else {
