@@ -61,15 +61,7 @@
             {{/if}}
             <div class="overlay-mark"></div>
           </div>
-          <div class="overlay-sub">
-            [{{gachaName}}]
-            {{if banner === '限定角色概率 UP'}}
-            <img class="overlay-banner-icon" src="{{_res_path}}gacha/imgs/icon/gacha_banner.png" alt="限定角色概率 UP" />
-            {{else}}
-            {{banner}}
-            {{/if}}
-            ：{{startShort}}-{{endShort}}
-          </div>
+          <div class="overlay-sub">[{{gachaName}}] {{banner}}：{{startShort}}-{{endShort}}</div>
           <div class="overlay-title">{{gachaName}}</div>
           {{if signature}}
           <div class="overlay-signature">{{signature}}</div>
