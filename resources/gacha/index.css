@@ -207,16 +207,6 @@
   z-index: 1;
 }
 
-.overlay-signature {
-  position: absolute;
-  left: clamp(22px, 4.4vw, 56px);
-  top: clamp(158px, 20vw, 260px);
-  font-size: clamp(12px, 2.8vw, 22px);
-  color: rgba(248, 113, 113, 0.9);
-  letter-spacing: 1px;
-  z-index: 1;
-}
-
 .overlay-icon {
   position: absolute;
   left: clamp(18px, 3.8vw, 44px);
